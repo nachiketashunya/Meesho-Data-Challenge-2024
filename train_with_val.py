@@ -25,6 +25,7 @@ from torch.optim.lr_scheduler import MultiStepLR
 import yaml
 import os
 import json
+import argparse
 
 def load_category_mapping():
     with open('cat_attr_map.json', 'r', encoding='utf-8') as f:
@@ -558,7 +559,15 @@ def train_model_with_validation(
 
 def main():
     # Load configuration
-    config_path = "config.yaml" 
+    parser = argparse.ArgumentParser(description='Train and Validate')
+    
+    parser.add_argument('--config_path', 
+                       type=str,
+                       help='Path to config yaml file')
+
+    args = parser.parse_args()
+
+    config_path = args.config_path
     config = load_config(config_path)
 
     torch.cuda.empty_cache()

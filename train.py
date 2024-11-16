@@ -28,9 +28,10 @@ import yaml
 import os
 from pathlib import Path
 import json
+import argparse
 
 def load_category_mapping():
-    with open('category_mapping.json', 'r', encoding='utf-8') as f:
+    with open('cat_attr_map.json', 'r', encoding='utf-8') as f:
         return json.load(f)
 
 # Load the mapping when the module is imported
@@ -549,7 +550,15 @@ def train_model(
 
 def main():
     # Load configuration
-    config_path = "config.yaml" 
+    parser = argparse.ArgumentParser(description='Train on the full dataset')
+    
+    parser.add_argument('--config_path', 
+                       type=str,
+                       help='Path to config yaml file')
+
+    args = parser.parse_args()
+
+    config_path = args.config_path
     config = load_config(config_path)
 
     torch.cuda.empty_cache()
