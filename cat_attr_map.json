@@ -1,0 +1,54 @@
+{
+    "Kurtis": {
+        "color": "attr_1",
+        "fit_shape": "attr_2",
+        "length": "attr_3",
+        "occasion": "attr_4",
+        "ornamentation": "attr_5",
+        "pattern": "attr_6",
+        "print_or_pattern_type": "attr_7",
+        "sleeve_length": "attr_8",
+        "sleeve_styling": "attr_9"
+    },
+    "Men Tshirts": {
+        "color": "attr_1",
+        "neck": "attr_2",
+        "pattern": "attr_3",
+        "print_or_pattern_type": "attr_4",
+        "sleeve_length": "attr_5"
+    },
+    "Sarees": {
+        "blouse_pattern": "attr_1",
+        "border": "attr_2",
+        "border_width": "attr_3",
+        "color": "attr_4",
+        "occasion": "attr_5",
+        "ornamentation": "attr_6",
+        "pallu_details": "attr_7",
+        "pattern": "attr_8",
+        "print_or_pattern_type": "attr_9",
+        "transparency": "attr_10"
+    },
+    "Women Tops & Tunics": {
+        "color": "attr_1",
+        "fit_shape": "attr_2",
+        "length": "attr_3",
+        "neck_collar": "attr_4",
+        "occasion": "attr_5",
+        "pattern": "attr_6",
+        "print_or_pattern_type": "attr_7",
+        "sleeve_length": "attr_8",
+        "sleeve_styling": "attr_9",
+        "surface_styling": "attr_10"
+    },
+    "Women Tshirts": {
+        "color": "attr_1",
+        "fit_shape": "attr_2",
+        "length": "attr_3",
+        "pattern": "attr_4",
+        "print_or_pattern_type": "attr_5",
+        "sleeve_length": "attr_6",
+        "sleeve_styling": "attr_7",
+        "surface_styling": "attr_8"
+    }
+}

@@ -1,0 +1,41 @@
+# Paths configuration
+paths:
+  data_dir: "/scratch/data/m23csa016/meesho_data"
+  train_csv: "train.csv"
+  train_images: "train_images"
+  log_dir: "/iitjhome/m23csa016/meesho_code/logs_e40"
+  cache_dir: "/scratch/data/m23csa016/meesho_data/"
+  checkpoint_dir: "/scratch/data/m23csa016/meesho_data/"
+
+# Wandb configuration
+wandb:
+  using: True
+  api_key: "82fadbf5b2810c5fdaee488a728eabb8f084b7a3"
+  project: "ViT-H-14-Quickgelu"
+  run_name_template: "{hidden_dim}x{num_hidden_layers}_qgelu_trainval"
+
+# Training configuration
+training:
+  batch_size: 16
+  num_epochs: 10
+  accumulation_steps: 2
+
+# Model configuration
+model:
+  clip_dim: 1024
+  hidden_dim: [512]
+  dropout_rate: [0.1]
+  num_hidden_layers: [1]
+
+# Optimizer configuration
+optimizer:
+  clip_lr: [1e-5]
+  predictor_lr: [5e-5]
+  weight_decay: [0.001]
+  beta1: [0.9]
+  beta2: [0.999]
+
+# Scheduler configuration
+scheduler:
+  gamma: 0.1
+  milestones: [4, 6, 10]
