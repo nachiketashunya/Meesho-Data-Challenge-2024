@@ -3,6 +3,13 @@
 ## Overview
 This repository contains the implementation for the Meesho Data Challenge. The codebase includes training pipelines with validation capabilities and inference scripts for model deployment.
 
+## Collaborators
+
+- [Alli Khadga Jyoth](https://www.linkedin.com/in/khadga-a/)
+- [Kushal Agrawal](https://www.linkedin.com/in/kushal-agrawal-36a387168/)
+- [Nachiketa Purohit](https://www.linkedin.com/in/nachiketa-purohit-2409551b1/)
+- [Ritu Singh](https://www.linkedin.com/in/ritusingh46/)
+
 ## Repository Structure
 The repository consists of three main Python scripts:
 
@@ -23,11 +30,16 @@ The repository consists of three main Python scripts:
 
 ## Getting Started
 
-### Prerequisites
-- Python 3.8+
-- PyTorch
-- CUDA-capable GPU (recommended)
-- Required Python packages (list them in `requirements.txt`)
+## Environment Setup
+
+- Install Python 3.10+ and set up a virtual environment
+- Install PyTorch with CUDA support:
+  ```bash
+  pip install torch==2.4.1 torchvision==0.19.1 --index-url https://download.pytorch.org/whl/cu121
+  ```
+- Ensure you have a CUDA-capable GPU (minimum 8GB VRAM)
+- Install all dependencies: `pip install -r requirements.txt`
+
 
 ### Configuration
 Before running any scripts, configure the training parameters in `config.yaml`
@@ -54,7 +66,11 @@ This will:
 - Generate training metrics
 
 ### Inference
-To run inference on test data:
+#### Load Model Checkpoint
+Download the pre-trained model checkpoint from the following link:
+[Checkpoint File](https://www.kaggle.com/models/naconda2611/vit-h-14-quickgelu-fulltrain-e4)
+
+#### To run inference on test data:
 ```bash
 python inference.py \
     --input_csv /path/to/input.csv \
@@ -79,17 +95,14 @@ python inference.py \
 ## Results
 [Summary of model performance, key metrics, and any notable findings]
 
+## License
+[MIT](LICENSE)
+
 ## Contributing
 Feel free to:
 - Open issues for bugs or enhancement requests
 - Submit pull requests with improvements
 - Share your experimental results
 
-## License
-[Specify the license under which this code is released]
-
 ## Acknowledgments
 [Credit any third-party resources, datasets, or inspirations used in the project]
-
-## Contact
-[Your contact information or how to reach out for questions]
