@@ -1,8 +1,7 @@
-Pillow==11.0.0
-PyYAML==6.0.2
-PyYAML==6.0.2
-scikit_learn==1.5.2
+Pillow
+PyYAML
+scikit_learn
 torch==2.4.1
-tqdm==4.66.5
-wandb==0.18.7
+tqdm
+wandb
 open-clip-torch==2.29.0
