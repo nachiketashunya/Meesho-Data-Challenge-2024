@@ -1,7 +1,9 @@
-Pillow
-PyYAML
-scikit_learn
+Pillow==11.0.0
+PyYAML==6.0.2
+PyYAML==6.0.2
+scikit_learn==1.5.2
+tqdm==4.66.5
+wandb==0.18.7
+--index-url https://download.pytorch.org/whl/cu121
 torch==2.4.1
-tqdm
-wandb
-open-clip-torch==2.29.0
+torchvision==0.19.1
