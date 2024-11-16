@@ -4,7 +4,6 @@ import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
 from PIL import Image
 import pandas as pd
-import clip
 from collections import defaultdict
 import os
 from tqdm.auto import tqdm
