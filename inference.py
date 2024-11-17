@@ -145,7 +145,7 @@ def predict_batch(
             start_time = time.time()
 
             # Get CLIP features for the batch
-            with torch.autocast(device):
+            with torch.autocast(str(device)):
                 clip_features_gelu = clip_model_gelu.encode_image(batch_images_gelu)
                 clip_features_convnext = clip_model_convnext.encode_image(
                     batch_images_convnext
