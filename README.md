@@ -81,7 +81,8 @@ This will:
 #### Load Model Checkpoint
 
 Download the pre-trained model checkpoint from the following link:
-[Checkpoint File](https://www.kaggle.com/models/naconda2611/vit-h-14-quickgelu-fulltrain-e4)
+[ViT-H14-quickgelu Checkpoint File](https://www.kaggle.com/models/naconda2611/vit-h-14-quickgelu-fulltrain-e4)
+[convnext-xxlarge Checkpoint File](https://www.kaggle.com/models/kushal1506/openclip-convnext-xxlarge-epoch-4)
 
 #### To run inference on test data:
 

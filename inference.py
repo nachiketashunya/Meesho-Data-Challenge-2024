@@ -187,7 +187,7 @@ def predict_batch(
 
             end_time = time.time()
             batch_time = end_time - start_time
-            pbar.set_postfix({"Batch Time": f"{batch_time:.2f}s"})
+            pbar.set_postfix({"Per Image Time": f"{batch_time/batch_size:.2f}s"})
 
             all_predictions.extend(batch_predictions)
 
@@ -234,7 +234,7 @@ def clean_state_dict(state_dict):
 
 def load_models(model_path_gelu, model_path_convnext, device, cache_dir=None):
     # Load the CLIP model gelu
-    checkpoint_gelu = torch.load(model_path_gelu, map_location="cpu")
+    checkpoint_gelu = torch.load(model_path_gelu, map_location="cpu",weights_only = False)
     clean_clip_checkpoint_gelu = clean_state_dict(
         checkpoint_gelu["clip_model_state_dict"]
     )
@@ -246,7 +246,7 @@ def load_models(model_path_gelu, model_path_convnext, device, cache_dir=None):
     torch.cuda.empty_cache()
 
     # Load the CLIP model convnext
-    checkpoint_convnext = torch.load(model_path_convnext, map_location="cpu")
+    checkpoint_convnext = torch.load(model_path_convnext, map_location="cpu",weights_only = False)
     clean_clip_checkpoint_convnext = clean_state_dict(
         checkpoint_convnext["clip_model_state_dict"]
     )
@@ -366,6 +366,7 @@ def process_csv_file(
     categories = df["Category"].iloc[valid_indices].tolist()
 
     print(f"Processing {len(image_paths)} valid images out of {len(df)} total entries")
+    print(f"Batch size: {batch_size}")
 
     # Get predictions in batches
 
