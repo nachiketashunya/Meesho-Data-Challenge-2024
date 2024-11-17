@@ -180,7 +180,7 @@ def custom_collate_fn(batch):
             targets[key] = torch.full((len(batch),), -1, dtype=torch.long)
     
     # Fill in the actual values
-    for batch_idx, (_, _, category, item_targets) in enumerate(batch):
+    for batch_idx, (_, category, item_targets) in enumerate(batch):
         for key, value in item_targets.items():
             if key in targets:
                 targets[key][batch_idx] = value
