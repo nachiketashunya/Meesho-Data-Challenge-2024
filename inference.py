@@ -17,10 +17,8 @@ def load_category_mapping():
     with open("cat_attr_map.json", "r", encoding="utf-8") as f:
         return json.load(f)
 
-
 # Load the mapping when the module is imported
 CATEGORY_MAPPING = load_category_mapping()
-
 
 class ImageDataset(Dataset):
     """Dataset class for batch processing of images"""

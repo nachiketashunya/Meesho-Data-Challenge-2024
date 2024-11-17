@@ -22,6 +22,8 @@ training:
 
 # Model configuration
 model:
+  name: "ViT-H-14-quickgelu"
+  pretrained: "dfn5b"
   clip_dim: 1024
   hidden_dim: [512]
   dropout_rate: [0.1]
