@@ -9,8 +9,8 @@ paths:
 
 # Wandb configuration
 wandb:
-  using: True
-  api_key: "82fadbf5b2810c5fdaee488a728eabb8f084b7a3"
+  using: False
+  api_key: ""
   project: "ViT-H-14-Quickgelu"
   run_name_template: "{hidden_dim}x{num_hidden_layers}_qgelu_trainval"
 
