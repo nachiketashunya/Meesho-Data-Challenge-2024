@@ -220,7 +220,7 @@ def validate_model(model, clip_model, val_loader, criterion, device, logger):
 def custom_collate_fn(batch):
     # Separate images, categories, and targets
     images = torch.stack([item[0] for item in batch])
-    categories = [item[2] for item in batch]
+    categories = [item[1] for item in batch]
     
     # Initialize an empty targets dict with all possible category-attribute combinations
     targets = {}

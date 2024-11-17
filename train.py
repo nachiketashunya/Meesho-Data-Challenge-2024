@@ -158,7 +158,7 @@ def convert_models_to_fp32(model):
 def custom_collate_fn(batch):
     # Separate images, categories, and targets
     images = torch.stack([item[0] for item in batch])
-    categories = [item[2] for item in batch]
+    categories = [item[1] for item in batch]
     
     # Initialize an empty targets dict with all possible category-attribute combinations
     targets = {}
@@ -529,7 +529,6 @@ def train_model(
                 # Model states
                 'model_state_dict': model.state_dict(),
                 'clip_model_state_dict': clip_model.state_dict(),
-                'optimizer_state_dict': optimizer.state_dict(),
                 
                 # Model architecture parameters
                 'model_config': {
