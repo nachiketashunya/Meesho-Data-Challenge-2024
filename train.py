@@ -29,63 +29,12 @@ from pathlib import Path
 import json
 import argparse
 
+def load_category_mapping():
+    with open("cat_attr_map.json", "r", encoding="utf-8") as f:
+        return json.load(f)
 
-# Category to attribute mapping
-category_class_attribute_mapping = {
-    'Kurtis': {
-        'color': 'attr_1',
-        'fit_shape': 'attr_2',
-        'length': 'attr_3',
-        'occasion': 'attr_4',
-        'ornamentation': 'attr_5',
-        'pattern': 'attr_6',
-        'print_or_pattern_type': 'attr_7',
-        'sleeve_length': 'attr_8',
-        'sleeve_styling': 'attr_9'
-    },
-    'Men Tshirts': {
-        'color': 'attr_1',
-        'neck': 'attr_2',
-        'pattern': 'attr_3',
-        'print_or_pattern_type': 'attr_4',
-        'sleeve_length': 'attr_5'
-    },
-    'Sarees': {
-        'blouse_pattern': 'attr_1',
-        'border': 'attr_2',
-        'border_width': 'attr_3',
-        'color': 'attr_4',
-        'occasion': 'attr_5',
-        'ornamentation': 'attr_6',
-        'pallu_details': 'attr_7',
-        'pattern': 'attr_8',
-        'print_or_pattern_type': 'attr_9',
-        'transparency': 'attr_10'
-    },
-    'Women Tops & Tunics': {
-        'color': 'attr_1',
-        'fit_shape': 'attr_2',
-        'length': 'attr_3',
-        'neck_collar': 'attr_4',
-        'occasion': 'attr_5',
-        'pattern': 'attr_6',
-        'print_or_pattern_type': 'attr_7',
-        'sleeve_length': 'attr_8',
-        'sleeve_styling': 'attr_9',
-        'surface_styling': 'attr_10'
-    },
-    'Women Tshirts': {
-        'color': 'attr_1',
-        'fit_shape': 'attr_2',
-        'length': 'attr_3',
-        'pattern': 'attr_4',
-        'print_or_pattern_type': 'attr_5',
-        'sleeve_length': 'attr_6',
-        'sleeve_styling': 'attr_7',
-        'surface_styling': 'attr_8'
-    }
-}
-
+# Load the mapping when the module is imported
+CATEGORY_MAPPING = load_category_mapping()
 
 def load_config(config_path):
     """Load configuration from YAML file"""
@@ -136,11 +85,11 @@ def log_hyperparameters(logger, params):
     logger.info(json.dumps(params, indent=2))
 
 
-def create_clip_model(device, cache_dir=None):
+def create_clip_model(model_name, pretrained_ds, device, cache_dir=None):
     model, preprocess_train, preprocess_val = open_clip.create_model_and_transforms(
-        'ViT-H-14-quickgelu',
+        model_name,
         device=device,
-        pretrained="dfn5b",
+        pretrained=pretrained_ds,
         precision="fp32",  # Explicitly set precision to fp32
         cache_dir=cache_dir
     )
@@ -162,7 +111,7 @@ def custom_collate_fn(batch):
     
     # Initialize an empty targets dict with all possible category-attribute combinations
     targets = {}
-    for category, attrs in category_class_attribute_mapping.items():
+    for category, attrs in CATEGORY_MAPPING.items():
         for attr_name in attrs.keys():
             key = f"{category}_{attr_name}"
             targets[key] = torch.full((len(batch),), -1, dtype=torch.long)
@@ -187,7 +136,7 @@ class ProductDataset(Dataset):
         self.clip_preprocess_val = clip_preprocess_val
         
         # Store category-wise attribute information
-        self.category_attributes = category_class_attribute_mapping
+        self.category_attributes = CATEGORY_MAPPING
         
         # Create attribute encoders and store unique values for each attribute
         self.attribute_encoders = {}
@@ -554,7 +503,7 @@ def train_model(
                 'dataset_info': {
                     'attribute_classes': train_dataset.attribute_classes,
                     'attribute_encoders': train_dataset.attribute_encoders,
-                    'category_mapping': category_class_attribute_mapping,
+                    'category_mapping': CATEGORY_MAPPING,
                 },
                 
                 # Training metrics
@@ -644,12 +593,20 @@ def main():
     milestones = config['scheduler']['milestones']
     checkpoint_dir = config['paths']['checkpoint_dir']
 
+    # CLIP model related configurations
+    clip_dim = config['model']['clip_dim']
+    model_name = config['model']['name']
+    pretrained_ds = config['model']['pretrained']
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     
     clip_model, clip_preprocess_train, clip_preprocess_val = create_clip_model(
+        model_name=model_name,
+        pretrained_ds=pretrained_ds,
         device=device,
         cache_dir=config['paths']['cache_dir']
     )
+
     logger.info("LAION CLIP model loaded successfully in fp32 precision")
     
     try:
@@ -698,7 +655,7 @@ def main():
         ):
             model = CategoryAwareAttributePredictor(
                 clip_dim=clip_dim,
-                category_attributes=category_class_attribute_mapping,
+                category_attributes=CATEGORY_MAPPING,
                 attribute_dims=attribute_dims,
                 hidden_dim=hidden_dim,
                 dropout_rate=dropout_rate,
