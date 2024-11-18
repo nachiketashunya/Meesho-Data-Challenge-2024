@@ -173,6 +173,9 @@ Feel free to:
 - Submit pull requests with improvements
 - Share your experimental results
 
-## Acknowledgments
+## Acknowledgements
 
-[Credit any third-party resources, datasets, or inspirations used in the project]
+We would like to extend our sincere gratitude to the following organizations for their support:
+
+- **Meesho**: For hosting the competition and providing a platform for us to showcase our work.
+- **CODS-COMAD**: For organizing the competition and enabling collaboration and innovation in the field of data science and machine learning.
