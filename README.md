@@ -109,7 +109,26 @@ python inference.py \
 
 ## Model Architecture
 
-[Brief description of the model architecture, key features, and any modifications]
+Our final model is a weighted ensemble of two cutting-edge architectures: ViT-H/14-quickgelu and
+ConvNext-XXLarge. The predictions from these models were combined using a weighted averaging
+mechanism to optimize overall performance. Details of architecture can be viewed from table below.
+
+Key Features:
+• ViT-H/14-quickgelu: Known for its precise feature extraction capabilities, this transformer-
+based model excels at capturing intricate patterns in visual data, making it ideal for attribute
+recognition tasks.
+• ConvNext-XXLarge: This convolutional model brings robust classification power, ensuring
+high accuracy across diverse datasets, particularly in scenarios with complex class distributions.
+The ensemble effectively leverages the complementary strengths of these two architectures—ViT
+H14’s fine-grained detail extraction and ConvNext’s robustness in handling classification complexities.
+
+## 4.2.2 Key Features
+
+| Model Architecture           | Description                                                                                              | Strengths                                           |
+|------------------------------|----------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
+| **ViT-H/14-quickgelu**        | A transformer-based model optimized for fine-grained feature extraction, excelling at capturing intricate patterns in visual data. | Ideal for attribute recognition tasks.              |
+| **ConvNext-XXLarge**         | A convolutional model known for its strong classification power, performing well on datasets with complex class distributions. | Robust classification capabilities in diverse datasets. |
+
 
 ## Results
 
