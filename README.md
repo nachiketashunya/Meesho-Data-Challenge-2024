@@ -119,7 +119,7 @@ Our final model is a weighted ensemble of two cutting-edge architectures: ViT-H/
 ConvNext-XXLarge. The predictions from these models were combined using a weighted averaging
 mechanism to optimize overall performance. Details of architecture can be viewed from table below.
 
-## 4.2.2 Key Features
+## Key Features
 
 | Model Architecture           | Description                                                                                              | Strengths                                           |
 |------------------------------|----------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
