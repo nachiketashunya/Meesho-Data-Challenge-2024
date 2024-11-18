@@ -16,9 +16,9 @@ wandb:
 
 # Training configuration
 training:
-  batch_size: 16
+  batch_size: 32
   num_epochs: 10
-  accumulation_steps: 2
+  accumulation_steps: 1
 
 # Model configuration
 model:
