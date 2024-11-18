@@ -129,7 +129,7 @@ mechanism to optimize overall performance. Details of architecture can be viewed
 
 ## Results
 
-Please refere table below for the leaderboard results.
+Please refer to the table below for the leaderboard results.
 
 ## Model Performance Comparison
 
