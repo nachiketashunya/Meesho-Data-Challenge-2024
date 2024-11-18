@@ -107,6 +107,12 @@ python inference.py \
 - `batch_size`: Number of images to process simultaneously
 - `cache_dir`: Directory for storing temporary files
 
+## Running the Code
+
+To run the full training and inference pipeline, you can use the provided notebook:
+
+- **[Train and Inference Notebook]([path/to/notebook.ipynb](https://github.com/nachiketashunya/Meesho-Data-Challenge-2024/blob/main/meesho-final-code.ipynb))**: This notebook contains the complete workflow for training the model and performing inference.
+
 ## Model Architecture
 
 Our final model is a weighted ensemble of two cutting-edge architectures: ViT-H/14-quickgelu and
@@ -132,7 +138,28 @@ H14’s fine-grained detail extraction and ConvNext’s robustness in handling c
 
 ## Results
 
-[Summary of model performance, key metrics, and any notable findings]
+Please refere table below for the leaderboard results.
+
+## Model Performance Comparison
+
+| **Approach Type**                                           | **Model & Technique**                                    | **Public Score** | **Private Score** |
+|-------------------------------------------------------------|----------------------------------------------------------|------------------|-------------------|
+| **VQA using VLM**                                           | Finetuned Qwen2VL-7B (instruct model using VQA)          | 0.551            | 0.583             |
+| **Image Similarity Based Search with Majority Voting**      | Hashing                                                  | 0.337            | 0.342             |
+|                                                             | SeResNext model and Faiss                                | 0.670            | 0.669             |
+|                                                             | Swin Transformer and Faiss                               | 0.606            | 0.605             |
+|                                                             | Frozen ClipViT B/32                                      | 0.723            | 0.724             |
+|                                                             | Frozen ClipViT L/14                                      | 0.777            | 0.778             |
+| **Classification Based w/ MLP Head**                        | ClipViT-B/32                                             | 0.765            | 0.765             |
+|                                                             | ClipViT-L/14                                             | 0.770            | 0.771             |
+|                                                             | ClipViT-L/14 optimal params                              | 0.785            | 0.785             |
+|                                                             | ClipViT-L/14 w/background removal                        | 0.782            | 0.779             |
+|                                                             | Coca                                                     | 0.797            | 0.794             |
+|                                                             | ConvNext-XXLarge                                         | 0.801            | 0.799             |
+|                                                             | ViT-H/14-quickgelu                                       | **0.806**        | **0.800**         |
+| **Ensemble Based**                                          | ViT-H/14-quickgelu + Coca                                | 0.804            | 0.801             |
+|                                                             | ConvNext-XXLarge + ViT-H/14                              | **0.807**        | **0.802**         |
+
 
 ## License
 
