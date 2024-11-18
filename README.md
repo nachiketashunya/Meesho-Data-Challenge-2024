@@ -111,7 +111,7 @@ python inference.py \
 
 To run the full training and inference pipeline, you can use the provided notebook:
 
-- **[Train and Inference Notebook]([https://github.com/nachiketashunya/Meesho-Data-Challenge-2024/blob/main/meesho-final-code.ipynb])**: This notebook contains the complete workflow for training the model and performing inference.
+- **[Train and Inference Notebook](https://github.com/nachiketashunya/Meesho-Data-Challenge-2024/blob/main/meesho-final-code.ipynb)**: This notebook contains the complete workflow for training the model and performing inference.
 
 ## Model Architecture
 
