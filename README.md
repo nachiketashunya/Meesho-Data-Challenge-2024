@@ -149,7 +149,7 @@ Please refer to the table below for the leaderboard results.
 |                                                             | ConvNext-XXLarge                                         | 0.801            | 0.799             |
 |                                                             | ViT-H/14-quickgelu                                       | **0.806**        | **0.800**         |
 | **Ensemble Based**                                          | ViT-H/14-quickgelu + Coca                                | 0.804            | 0.801             |
-|                                                             | ConvNext-XXLarge + ViT-H/14                              | **0.807**        | **0.802**         |
+|                                                             | ConvNext-XXLarge + ViT-H/14-quickgelu                    | **0.807**        | **0.802**         |
 
 
 ## License
