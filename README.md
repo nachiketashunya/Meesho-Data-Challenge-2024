@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains the implementation for the Meesho Data Challenge. The codebase includes training pipelines with validation capabilities and inference scripts for model deployment.
+This repository contains the implementation for the Meesho Data Challenge. The codebase includes training pipelines with validation capabilities and inference scripts for model deployment. For a detailed report check [here](./Meesho_Data_Challenge_2024_NeuralNinjas_Report.pdf).
 
 ## Collaborators
 
@@ -115,17 +115,24 @@ To run the full training and inference pipeline, you can use the provided notebo
 
 ## Model Architecture
 
-Our final model is a weighted ensemble of two cutting-edge architectures: ViT-H/14-quickgelu and
-ConvNext-XXLarge. The predictions from these models were combined using a weighted averaging
-mechanism to optimize overall performance. Details of architecture can be viewed from table below.
+<img src="assets/training_pipeline.jpg" alt="Training Pipeline" >
+<div style="display: flex; align-items: flex-start;">
+  <img src="assets/inference_pipeline.jpg" alt="Inference Pipeline" width="400" style="margin-right: 15px;">
+  <p>
+    Our final model is a weighted ensemble of two cutting-edge architectures: ViT-H/14-quickgelu and
+    ConvNext-XXLarge. The predictions from these models were combined using a weighted averaging
+    mechanism to optimize overall performance. Details of architecture can be viewed from the table below.
+  </p>
+</div>
+
+
 
 ## Key Features
 
-| Model Architecture           | Description                                                                                              | Strengths                                           |
-|------------------------------|----------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
-| **ViT-H/14-quickgelu**        | A transformer-based model optimized for fine-grained feature extraction, excelling at capturing intricate patterns in visual data. | Ideal for attribute recognition tasks.              |
-| **ConvNext-XXLarge**         | A convolutional model known for its strong classification power, performing well on datasets with complex class distributions. | Robust classification capabilities in diverse datasets. |
-
+| Model Architecture           | Description                                                                                                                        | Strengths                                               |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
+| **ViT-H/14-quickgelu** | A transformer-based model optimized for fine-grained feature extraction, excelling at capturing intricate patterns in visual data. | Ideal for attribute recognition tasks.                  |
+| **ConvNext-XXLarge**   | A convolutional model known for its strong classification power, performing well on datasets with complex class distributions.     | Robust classification capabilities in diverse datasets. |
 
 ## Results
 
@@ -133,24 +140,23 @@ Please refer to the table below for the leaderboard results.
 
 ## Model Performance Comparison
 
-| **Approach Type**                                           | **Model & Technique**                                    | **Public Score** | **Private Score** |
-|-------------------------------------------------------------|----------------------------------------------------------|------------------|-------------------|
-| **VQA using VLM**                                           | Finetuned Qwen2VL-7B (instruct model using VQA)          | 0.551            | 0.583             |
-| **Image Similarity Based Search with Majority Voting**      | Hashing                                                  | 0.337            | 0.342             |
-|                                                             | SeResNext model and Faiss                                | 0.670            | 0.669             |
-|                                                             | Swin Transformer and Faiss                               | 0.606            | 0.605             |
-|                                                             | Frozen ClipViT B/32                                      | 0.723            | 0.724             |
-|                                                             | Frozen ClipViT L/14                                      | 0.777            | 0.778             |
-| **Classification Based w/ MLP Head**                        | ClipViT-B/32                                             | 0.765            | 0.765             |
-|                                                             | ClipViT-L/14                                             | 0.770            | 0.771             |
-|                                                             | ClipViT-L/14 optimal params                              | 0.785            | 0.785             |
-|                                                             | ClipViT-L/14 w/background removal                        | 0.782            | 0.779             |
-|                                                             | Coca                                                     | 0.797            | 0.794             |
-|                                                             | ConvNext-XXLarge                                         | 0.801            | 0.799             |
-|                                                             | ViT-H/14-quickgelu                                       | **0.806**        | **0.800**         |
-| **Ensemble Based**                                          | ViT-H/14-quickgelu + Coca                                | 0.804            | 0.801             |
-|                                                             | ConvNext-XXLarge + ViT-H/14-quickgelu                    | **0.807**        | **0.802**         |
-
+| **Approach Type**                                      | **Model & Technique**                     | **Public Score** | **Private Score** |
+| ------------------------------------------------------------ | ----------------------------------------------- | ---------------------- | ----------------------- |
+| **VQA using VLM**                                      | Finetuned Qwen2VL-7B (instruct model using VQA) | 0.551                  | 0.583                   |
+| **Image Similarity Based Search with Majority Voting** | Hashing                                         | 0.337                  | 0.342                   |
+|                                                              | SeResNext model and Faiss                       | 0.670                  | 0.669                   |
+|                                                              | Swin Transformer and Faiss                      | 0.606                  | 0.605                   |
+|                                                              | Frozen ClipViT B/32                             | 0.723                  | 0.724                   |
+|                                                              | Frozen ClipViT L/14                             | 0.777                  | 0.778                   |
+| **Classification Based w/ MLP Head**                   | ClipViT-B/32                                    | 0.765                  | 0.765                   |
+|                                                              | ClipViT-L/14                                    | 0.770                  | 0.771                   |
+|                                                              | ClipViT-L/14 optimal params                     | 0.785                  | 0.785                   |
+|                                                              | ClipViT-L/14 w/background removal               | 0.782                  | 0.779                   |
+|                                                              | Coca                                            | 0.797                  | 0.794                   |
+|                                                              | ConvNext-XXLarge                                | 0.801                  | 0.799                   |
+|                                                              | ViT-H/14-quickgelu                              | **0.806**        | **0.800**         |
+| **Ensemble Based**                                     | ViT-H/14-quickgelu + Coca                       | 0.804                  | 0.801                   |
+|                                                              | ConvNext-XXLarge + ViT-H/14-quickgelu           | **0.807**        | **0.802**         |
 
 ## License
 
